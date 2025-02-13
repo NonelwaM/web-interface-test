@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Virtual Agent Demo</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure full viewport height */
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  color: #333; /* Darker heading color */
+}
+
+.container {
+  flex: 1; /* Allow content to expand and fill space */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 20px;
+}
+
+df-messenger {
+  z-index: 999;
+  position: fixed;
+  --df-messenger-font-color: #000;
+  --df-messenger-font-family: sans-serif; /* Use a standard font */
+  --df-messenger-chat-background: #f3f6fc;
+  --df-messenger-message-user-background: #d3e3fd;
+  --df-messenger-message-bot-background: #fff;
+  bottom: 20px; /* Adjusted spacing */
+  right: 20px; /* Adjusted spacing */
+  --df-messenger-chat-max-height: 400px; /* Set a max height for the chat window */
+  --df-messenger-chat-width: 350px; /* Set a width for the chat window */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  border-radius: 8px; /* Add rounded corners */
+}
+
+df-messenger-chat-bubble {
+    border-radius: 8px; /* Add rounded corners to the chat bubble too */
+}
+/* Optional: Style the welcome message within the chat bubble */
+df-messenger::part(welcome-text) {
+  font-style: italic;
+  color: #777;
+}
+
+/* Optional: Style the user and bot messages */
+df-messenger::part(message-user) {
+    background-color: #e1f0c4; /* Example: Light green for user */
+}
+df-messenger::part(message-bot) {
+    background-color: #ffffff; /* Example: White for bot */
+}
+
+
+</style>
+</head>
+<body>
+
+  <h1>Welcome to the Virtual Agent Demo</h1>
+
+  <div class="container">
+      </div>
+
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+  <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+  <df-messenger
+    project-id="abacus-demo-va"  agent-id="9a4bbb04-7889-497b-8a57-da82e3a7958e"  language-code="en"
+    max-query-length="-1">
+    <df-messenger-chat-bubble
+     chat-title="Virtual Agent">  </df-messenger-chat-bubble>
+  </df-messenger>
+
+</body>
+</html>
